@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import elearning.project.models.Course;
 
-public interface CourseRepo extends JpaRepository<Course, Integer>{
+public interface CourseRepo extends JpaRepository<Course, Long>{
 
 }

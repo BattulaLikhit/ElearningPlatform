@@ -22,7 +22,7 @@ import jakarta.persistence.ManyToMany;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int CourseID;
+    private Long CourseID;
     private String Title;
     private String Description;
     private String ContentURL;

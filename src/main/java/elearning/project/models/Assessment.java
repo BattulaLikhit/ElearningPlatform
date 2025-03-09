@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class Assessment {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int assessmentID;
+	private Long assessmentID;
 
 	@ManyToOne
 	@JoinColumn(name = "courseId")

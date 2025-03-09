@@ -1,7 +1,7 @@
 package elearning.project.controller;
 
 import elearning.project.models.User;
-import elearning.project.service.UserService;
+import elearning.project.serviceuser.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,19 +30,19 @@ public class UserController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<User> getUserById(@PathVariable int id) {
-		User user = service.getUserById(id).get();
+	public ResponseEntity<User> getUserById(@PathVariable Long id) {
+		User user = service.getUserById(id).get(); 
 		return ResponseEntity.ok(user);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User userDetails) {
+	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
 		User updatedUser = service.updateUser(id, userDetails);
 		return ResponseEntity.ok(updatedUser);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteUser(@PathVariable int id) {
+	public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
 		service.deleteUser(id);
 		return ResponseEntity.noContent().build();
 	}
