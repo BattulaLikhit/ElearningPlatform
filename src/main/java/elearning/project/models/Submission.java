@@ -1,5 +1,7 @@
 package elearning.project.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,10 +25,12 @@ public class Submission {
 
 	@ManyToOne
 	@JoinColumn(name = "assessmentId")
+	@JsonBackReference
 	private Assessment assessment;
 
 	@ManyToOne
 	@JoinColumn(name = "studentId")
+	@JsonBackReference
 	private User user;
 
 }

@@ -2,6 +2,9 @@ package elearning.project.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,12 +28,14 @@ public class Assessment {
 
 	@ManyToOne
 	@JoinColumn(name = "courseId")
+	@JsonBackReference
 	private Course course;
 
 	private Type type;
 	private int maxScore;
 
 	@OneToMany(mappedBy = "assessment",cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<Submission> sub;
 
 	public enum Type {

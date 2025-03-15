@@ -3,6 +3,7 @@ package elearning.project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import elearning.project.models.Course;
 import elearning.project.servicecourse.CourseService;
@@ -17,7 +18,7 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
-
+    
     @GetMapping
     public List<Course> getAllCourses() {
         return courseService.getAllCourses();
@@ -28,7 +29,7 @@ public class CourseController {
         Optional<Course> course = courseService.getCourseById(id);
         return new ResponseEntity<>(course.get(),HttpStatus.ACCEPTED);
     }
-
+    @PreAuthorize("hasRole('INSTRUCTOR')")
     @PostMapping
     public Course createCourse(@RequestBody Course course) {
         return courseService.saveCourse(course);
